@@ -1,0 +1,38 @@
+[
+    {
+        "command": "C:\\Users\\fullb\\.platformio\\packages\\toolchain-gccarmnoneeabi\\bin\\arm-none-eabi-gcc.exe -mthumb -mcpu=cortex-m4 -x assembler-with-cpp -DPLATFORMIO=60200 -DSTM32F4 -DSTM32F411xE -DF_CPU=100000000L -IC:\\Users\\fullb\\.platformio\\packages\\framework-cmsis\\CMSIS\\Include -IC:\\Users\\fullb\\.platformio\\packages\\framework-cmsis-stm32f4\\Include -c -o .pio\\build\\Lab_GPIO_DIO_LED_Photosensor\\FrameworkCMSIS\\gcc\\startup_stm32f411xe.o C:\\Users\\fullb\\.platformio\\packages\\framework-cmsis-stm32f4\\Source\\Templates\\gcc\\startup_stm32f411xe.S",
+        "directory": "C:\\Users\\fullb\\source\\repos\\EC",
+        "file": "C:\\Users\\fullb\\.platformio\\packages\\framework-cmsis-stm32f4\\Source\\Templates\\gcc\\startup_stm32f411xe.S",
+        "output": ".pio\\build\\Lab_GPIO_DIO_LED_Photosensor\\FrameworkCMSIS\\gcc\\startup_stm32f411xe.o"
+    },
+    {
+        "command": "C:\\Users\\fullb\\.platformio\\packages\\toolchain-gccarmnoneeabi\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\Lab_GPIO_DIO_LED_Photosensor\\FrameworkCMSIS\\system_stm32f4xx.o -c -std=c11 -O3 -Os -ffunction-sections -fdata-sections -Wall -mthumb -mcpu=cortex-m4 -DPLATFORMIO=60200 -DSTM32F4 -DSTM32F411xE -DF_CPU=100000000L -IC:\\Users\\fullb\\.platformio\\packages\\framework-cmsis\\CMSIS\\Include -IC:\\Users\\fullb\\.platformio\\packages\\framework-cmsis-stm32f4\\Include C:\\Users\\fullb\\.platformio\\packages\\framework-cmsis-stm32f4\\Source\\Templates\\system_stm32f4xx.c",
+        "directory": "C:\\Users\\fullb\\source\\repos\\EC",
+        "file": "C:\\Users\\fullb\\.platformio\\packages\\framework-cmsis-stm32f4\\Source\\Templates\\system_stm32f4xx.c",
+        "output": ".pio\\build\\Lab_GPIO_DIO_LED_Photosensor\\FrameworkCMSIS\\system_stm32f4xx.o"
+    },
+    {
+        "command": "C:\\Users\\fullb\\.platformio\\packages\\toolchain-gccarmnoneeabi\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\Lab_GPIO_DIO_LED_Photosensor\\src\\include\\ecGPIO2.o -c -std=c11 -O3 -Os -ffunction-sections -fdata-sections -Wall -mthumb -mcpu=cortex-m4 -DPLATFORMIO=60200 -DSTM32F4 -DSTM32F411xE -DF_CPU=100000000L -Iinclude -I. -IC:\\Users\\fullb\\.platformio\\packages\\framework-cmsis\\CMSIS\\Include -IC:\\Users\\fullb\\.platformio\\packages\\framework-cmsis-stm32f4\\Include include\\ecGPIO2.c",
+        "directory": "C:\\Users\\fullb\\source\\repos\\EC",
+        "file": "include\\ecGPIO2.c",
+        "output": ".pio\\build\\Lab_GPIO_DIO_LED_Photosensor\\src\\include\\ecGPIO2.o"
+    },
+    {
+        "command": "C:\\Users\\fullb\\.platformio\\packages\\toolchain-gccarmnoneeabi\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\Lab_GPIO_DIO_LED_Photosensor\\src\\include\\ecPinNames.o -c -std=c11 -O3 -Os -ffunction-sections -fdata-sections -Wall -mthumb -mcpu=cortex-m4 -DPLATFORMIO=60200 -DSTM32F4 -DSTM32F411xE -DF_CPU=100000000L -Iinclude -I. -IC:\\Users\\fullb\\.platformio\\packages\\framework-cmsis\\CMSIS\\Include -IC:\\Users\\fullb\\.platformio\\packages\\framework-cmsis-stm32f4\\Include include\\ecPinNames.c",
+        "directory": "C:\\Users\\fullb\\source\\repos\\EC",
+        "file": "include\\ecPinNames.c",
+        "output": ".pio\\build\\Lab_GPIO_DIO_LED_Photosensor\\src\\include\\ecPinNames.o"
+    },
+    {
+        "command": "C:\\Users\\fullb\\.platformio\\packages\\toolchain-gccarmnoneeabi\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\Lab_GPIO_DIO_LED_Photosensor\\src\\include\\ecRCC2.o -c -std=c11 -O3 -Os -ffunction-sections -fdata-sections -Wall -mthumb -mcpu=cortex-m4 -DPLATFORMIO=60200 -DSTM32F4 -DSTM32F411xE -DF_CPU=100000000L -Iinclude -I. -IC:\\Users\\fullb\\.platformio\\packages\\framework-cmsis\\CMSIS\\Include -IC:\\Users\\fullb\\.platformio\\packages\\framework-cmsis-stm32f4\\Include include\\ecRCC2.c",
+        "directory": "C:\\Users\\fullb\\source\\repos\\EC",
+        "file": "include\\ecRCC2.c",
+        "output": ".pio\\build\\Lab_GPIO_DIO_LED_Photosensor\\src\\include\\ecRCC2.o"
+    },
+    {
+        "command": "C:\\Users\\fullb\\.platformio\\packages\\toolchain-gccarmnoneeabi\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\Lab_GPIO_DIO_LED_Photosensor\\src\\lab\\LAB_GPIO_DIO_LED\\LAB_GPIO_DIO_LED_Photosensor.o -c -std=c11 -O3 -Os -ffunction-sections -fdata-sections -Wall -mthumb -mcpu=cortex-m4 -DPLATFORMIO=60200 -DSTM32F4 -DSTM32F411xE -DF_CPU=100000000L -Iinclude -I. -IC:\\Users\\fullb\\.platformio\\packages\\framework-cmsis\\CMSIS\\Include -IC:\\Users\\fullb\\.platformio\\packages\\framework-cmsis-stm32f4\\Include lab\\LAB_GPIO_DIO_LED\\LAB_GPIO_DIO_LED_Photosensor.c",
+        "directory": "C:\\Users\\fullb\\source\\repos\\EC",
+        "file": "lab\\LAB_GPIO_DIO_LED\\LAB_GPIO_DIO_LED_Photosensor.c",
+        "output": ".pio\\build\\Lab_GPIO_DIO_LED_Photosensor\\src\\lab\\LAB_GPIO_DIO_LED\\LAB_GPIO_DIO_LED_Photosensor.o"
+    }
+]

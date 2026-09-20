@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "structdustmq\\x64\\Debug\\dustmq1.obj",
+            "outputs": [
+                "structdustmq\\x64\\Debug\\dustmq1.cpp.obj.dt.module.json",
+                "structdustmq\\x64\\Debug\\dustmq1.cpp.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}
