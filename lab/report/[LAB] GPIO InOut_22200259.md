@@ -4,9 +4,11 @@
 
 **Author:** 22200259 명금준
 
-**Github:**
+**Github:** [https://github.com/SingularityX612/EC-STM32F4-22200259](https://github.com/SingularityX612/EC-STM32F4-22200259)
 
-**Demo Video:**
+**Demo Video:** 
+* Photosensor: https://youtu.be/ebv6g0asG5Y
+* MultiLED: https://youtu.be/wJodvw53-OY
 
 ## Introduction
 
@@ -38,15 +40,15 @@ Download library files.
 * `ecPinNames.h, ecPinNames.c`
 * `ecGPIO2_student.h, ecGPIO2_student.c`
 
-Create your own library for GPIO by renaming the downloaded files (ecGPIO2_student.*) as
-
-`ecGPIO2.c`, `ecGPIO2.h`
+Create your own library for GPIO by renaming the downloaded files (ecGPIO2_student.*) as:
+* Header: [`ecGPIO2.h`](https://github.com/SingularityX612/EC-STM32F4-22200259/blob/main/include/ecGPIO2.h)
+* Source: [`ecGPIO2.c`](https://github.com/SingularityX612/EC-STM32F4-22200259/blob/main/include/ecGPIO2.c)
 
 Open `ecGPIO2.c` and change from `#include "ecGPIO2_student.h"` to `#include "ecGPIO2.h"`
 
 ## Function Definitions
 Fill-in the blanks in the header files to complete the definitions for the provided functions
-### ecGPIO2.h
+### [`ecGPIO2.h`](https://github.com/SingularityX612/EC-STM32F4-22200259/blob/main/include/ecGPIO2.h)
 ```c
 void GPIO_init(PinName_t pinName, int mode);
 void GPIO_write(PinName_t pinName, int Output);
@@ -57,7 +59,7 @@ void GPIO_otype(PinName_t pinName, int type);
 void GPIO_pupd(PinName_t pinName, int pupd);
 ```
 
-#### `ecGPIO2.c` Function Implementation Details
+#### [`ecGPIO2.c`](https://github.com/SingularityX612/EC-STM32F4-22200259/blob/main/include/ecGPIO2.c) Function Implementation Details
 
 * `GPIO_init`: Enables the peripheral clock (`RCC`) for the corresponding port and initializes the pin mode
 ```c
@@ -180,7 +182,7 @@ Toggle the LED by covering the photodetector sensor.
 | **Dark** | LOW (0V) | `0` | `HIGH` (LED ON) |
 
 ### Description with Code
-* Lab source code: 
+* Lab source code: [LAB_GPIO_DIO_LED_Photosensor.c](https://github.com/SingularityX612/EC-STM32F4-22200259/blob/main/lab/LAB_GPIO_InOut/LAB_GPIO_DIO_LED_Photosensor.c)
 
 * Description 1: Initialize pins according to the configuration
 ```c
@@ -249,7 +251,7 @@ You must modify the `platformio.ini`, to add new environment.
 | **State 3** | Falling Edge (`1 -> 0`)<br>No Press (Others) | **State 0**<br>**State 3** | `1, 0, 0, 0` | LED3 ON |
 
 ### Description with Code
-* Lab source code:
+* Lab source code: [LAB_GPIO_DIO_multiLED.c](https://github.com/SingularityX612/EC-STM32F4-22200259/blob/main/lab/LAB_GPIO_InOut/LAB_GPIO_DIO_multiLED.c)
 
 * Description 1: LED Pin Array Grouping & Initialization
 
