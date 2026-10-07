@@ -1,10 +1,18 @@
-#include "ecGPIO2.h"
-#include "ecRCC2.h"
-#include "stm32f4xx.h"
+/*----------------------------------------------------------------\
+@ Embedded Controller by Young-Keun Kim - Handong Global University
+Author           : 22200259_명금준
+Created          : 05-03-2021
+Modified         : 09-21-2026
+Language/ver     : C++ in VS Code
+
+Description      : [WRITE BRIEF DESCRIPTION] !!!!!!
+/----------------------------------------------------------------*/
+// #include "ecGPIO2.h"
+// #include "ecRCC2.h"
+// #include "stm32f4xx.h"
+#include "ecSTM32F4v2.h"
 
 
-PinName_t pinFND[8] = {PB_0, PB_1, PB_2, PB_3, PB_4, PB_5, PB_6, PB_7};
-PinName_t selectFND[4] = {PA_10, PA_11, PC_4, PC_3};
 // [YOUR CODE GOES HERE]
 
 void setup(void) {

@@ -1,9 +1,4 @@
-#include "ecGPIO2.h"
-#include "ecRCC2.h"
-#include "stm32f4xx.h"
-
-PinName_t pinFND[8] = {PB_0, PB_1, PB_2, PB_3, PB_4, PB_5, PB_6, PB_7};
-PinName_t selectFND[4] = {PA_10, PA_11, PC_4, PC_3};
+#include "ecSTM32F4v2.h"
 // [YOUR CODE GOES HERE]
 
 #define BUTTON_PIN PA_4
@@ -27,7 +22,7 @@ int main(void) {
   uint8_t selectFND1 = 0;
   uint8_t selectFND2 = 1;
 
-  // uint8_t count = 0;
+  uint8_t count = 0;
 
   int button_state = 1;
   int prev_button_state = 1;
@@ -45,16 +40,16 @@ int main(void) {
 
     if (prev_button_state == 1 && button_state == 0) {
       numDisplay1++;
-      if (numDisplay1 > 9) {
-        numDisplay1 = 0;
-        numDisplay2++;
-        if (numDisplay2 > 1) {
-          numDisplay2 = 0;
-        }
-      }
-      // count = (count + 1) % 20;
-      // numDisplay1 = count % 10; // segment 0
-      // numDisplay2 = count / 10; // segment 1
+      // if (numDisplay1 > 9) {
+      //   numDisplay1 = 0;
+      //   numDisplay2++;
+      //   if (numDisplay2 > 1) {
+      //     numDisplay2 = 0;
+      //   }
+      // }
+      count = (count + 1) % 20;
+      numDisplay1 = count % 10; // segment 0
+      numDisplay2 = count / 10; // segment 1
 
       delay_ms_HSI(70);
     }
