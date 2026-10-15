@@ -2,7 +2,7 @@
 @ Embedded Controller by Young-Keun Kim - Handong Global University
 Author           : 22200259 명금준
 Created          : 05-03-2021
-Modified         : 09-29-2026
+Modified         : 10-14-2026
 Language/ver     : C++ in VS Code
 
 Description      : SysTick Library. Distributed to Students for LAB_SYSTICK
@@ -62,6 +62,28 @@ void delay_ms (uint32_t msec){
   	uint32_t curTicks;
   	curTicks = msTicks;
 	while ((msTicks - curTicks) < msec){;}		// unsigned math: safe across wrap-around
+}
+
+void delay_us(uint32_t usec) {
+    if (usec == 0) return;
+
+    // 1µs당 84클럭 (84MHz 기준: 84 * usec)
+    uint32_t total_ticks = usec * (EC_SYSCLK / 1000000UL);
+    uint32_t elapsed_ticks = 0;
+    uint32_t old_val = SysTick->VAL;
+
+    while (elapsed_ticks < total_ticks) {
+        uint32_t cur_val = SysTick->VAL;
+
+        // SysTick은 다운카운터(숫자가 줄어듦)
+        if (cur_val <= old_val) {
+            elapsed_ticks += (old_val - cur_val);
+        } else {
+            // 카운터가 0에 도달하여 SysTick->LOAD 값으로 리로드(Wrap-around)된 경우
+            elapsed_ticks += (old_val + (SysTick->LOAD + 1 - cur_val));
+        }
+        old_val = cur_val;
+    }
 }
 
 

@@ -5,7 +5,7 @@ Created          : 05-03-2021
 Modified         : 10-01-2026
 Language/ver     : C++ in VS Code
 
-Description      : [LAB] EXTI-Counter
+Description      : [LAB] EXTI-Counter_0-60(challange)
 /----------------------------------------------------------------*/
 
 #include "ecSTM32F4v2.h"
@@ -55,15 +55,14 @@ int main(void) {
     FND_display(numDisplay2);
     delay_ms(2);
 
-    numDisplay1 = count % 10;
-    numDisplay2 = count / 10;
-
     if (!Pause) {
       count_stack += 4;
     }
 
     if (count_stack >= 1000) {
       count = (count + 1) % 60;
+      numDisplay1 = count % 10;
+      numDisplay2 = count / 10;
       count_stack = 0;
     }
   }
@@ -73,6 +72,8 @@ void EXTI2_IRQHandler(void) {
   if (is_pending_EXTI(SW1_PIN)) {
     count = 0;
     count_stack = 0;
+    numDisplay1 = 0;
+    numDisplay2 = 0;
     clear_pending_EXTI(SW1_PIN);
   }
 }

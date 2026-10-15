@@ -39,7 +39,7 @@ int main(void) {
     button_state = GPIO_read(BUTTON_PIN);
 
     if (prev_button_state == 1 && button_state == 0) {
-      numDisplay1++;
+      // numDisplay1++;
       // if (numDisplay1 > 9) {
       //   numDisplay1 = 0;
       //   numDisplay2++;
