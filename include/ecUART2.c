@@ -1,7 +1,7 @@
 
 /*----------------------------------------------------------------\
 @ Embedded Controller by Young-Keun Kim - Handong Global University
-Author           : [ YOUR NAME GOES HERE !!!!!]
+Author           : 22200259 Keumjoon Myeong
 Created          : 10-08-2026
 Modified         : 10-08-2026
 Language/ver     : C in VS Code
@@ -146,10 +146,15 @@ void USART_pins(USART_TypeDef* USARTx, PinName_t pin_GPIO_TX, PinName_t pin_GPIO
 	ecPinmap(pin_GPIO_RX, &GPIO_RX, &pinRX);
 
 	// Alternate Function, Push-Pull, No Pull-up/down, High speed
-	// [YOUR CODE HERE]
-  // [YOUR CODE HERE]
-  // [YOUR CODE HERE]
-  // [YOUR CODE HERE]
+	GPIO_init(pin_GPIO_TX, AF);
+	GPIO_otype(pin_GPIO_TX, PUSH_PULL);
+	GPIO_pupd(pin_GPIO_TX, NO_PUPD);
+	GPIO_ospeed(pin_GPIO_TX, HIGH_SPEED);
+
+	GPIO_init(pin_GPIO_RX, AF);
+	GPIO_otype(pin_GPIO_RX, PUSH_PULL);
+	GPIO_pupd(pin_GPIO_RX, NO_PUPD);
+	GPIO_ospeed(pin_GPIO_RX, HIGH_SPEED);
 
 	// Set Alternate Function Register for USARTx
 	//   AF7 - USART1, USART2
@@ -158,14 +163,8 @@ void USART_pins(USART_TypeDef* USARTx, PinName_t pin_GPIO_TX, PinName_t pin_GPIO
 	if (pinTX < 8) { GPIO_TX->AFR[0] &= ~(0xFUL << (4*pinTX));     GPIO_TX->AFR[0] |= AF_num << (4*pinTX); }
 	else           { GPIO_TX->AFR[1] &= ~(0xFUL << (4*(pinTX-8))); GPIO_TX->AFR[1] |= AF_num << (4*(pinTX-8)); }
 	
-  if (pinRX < 8) {
-    // [YOUR CODE HERE] 
-    // [YOUR CODE HERE] 
-  }
-  else{
-    // [YOUR CODE HERE] 
-    // [YOUR CODE HERE]   
-  }
+	if (pinRX < 8) { GPIO_RX->AFR[0] &= ~(0xFUL << (4*pinRX));     GPIO_RX->AFR[0] |= AF_num << (4*pinRX); }
+	else           { GPIO_RX->AFR[1] &= ~(0xFUL << (4*(pinRX-8))); GPIO_RX->AFR[1] |= AF_num << (4*(pinRX-8)); }
 
 }
 
@@ -246,10 +245,10 @@ void USART1_init(void){
 
   // BAUD RATE (Default: 9600)
   //    Baud rate : BRR[15:4]=mantissa, BRR[3:0]=fraction (1/16 steps)
-  //    USARTDIV = f_APB1 / (16 x baud)
+  //    USARTDIV = f_APB2 / (16 x baud)
   //    USART_baud(USARTx, 9600);
-  uint32_t baud=  9600;				// Default baud rate for USART2
-  float fCK      = (float)EC_SYSCLK / 2;		// APB1 : 84MHz PLL -> 42MHz
+  uint32_t baud=  9600;				// Default baud rate for USART1
+  float fCK      = (float)EC_SYSCLK;			// APB2 : 84MHz PLL
   float USARTDIV = fCK / 16 / baud;
   uint32_t MNT   = (uint32_t)USARTDIV;
   uint32_t FRC   = round((USARTDIV - MNT) * 16);
@@ -303,12 +302,12 @@ void USART2_init(void){
 	GPIO_init(pin_GPIO_TX, AF);
 	GPIO_otype(pin_GPIO_TX, PUSH_PULL);
 	GPIO_pupd(pin_GPIO_TX, NO_PUPD);
-	GPIO_ospeed(pin_GPIO_TX, HIGH);
+	GPIO_ospeed(pin_GPIO_TX, HIGH_SPEED);
 
 	GPIO_init(pin_GPIO_RX, AF);
 	GPIO_otype(pin_GPIO_RX, PUSH_PULL);
 	GPIO_pupd(pin_GPIO_RX, NO_PUPD);
-	GPIO_ospeed(pin_GPIO_RX, HIGH);
+	GPIO_ospeed(pin_GPIO_RX, HIGH_SPEED);
 
  	// Set Alternate Function Register for USARTx
 	//   AF7 - USART1, USART2
@@ -429,4 +428,3 @@ void USART_delay(uint32_t us) {
    uint32_t time = 100*us/7;
    while(--time);
 }
-

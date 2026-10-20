@@ -16,7 +16,8 @@ Description      : Singularity is near
 #include "stm32f4xx.h"
 #include "stm32f411xe.h"
 #include "math.h"
-
+#include "stdio.h"
+#include "string.h"
 // EC course Library
 #include "ecPinNames.h"
 #include "ecRCC2.h"

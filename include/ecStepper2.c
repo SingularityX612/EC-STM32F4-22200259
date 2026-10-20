@@ -86,6 +86,9 @@ void stepper_step(uint32_t steps, uint32_t direction) {
         GPIO_write(stepperPins[k], LOW);
       }
     }
+
+    if (_steps == 0) break;
+
     // Update Present State
     state = fsm[state].next[direction];
     // YOUR CODE
@@ -96,6 +99,8 @@ void stepper_step(uint32_t steps, uint32_t direction) {
     // Delay for steppermotor speed
     delay_us(_step_delay);
   }
+
+  stepper_stop();
 }
 
 // Stepper Motor Output for given state
