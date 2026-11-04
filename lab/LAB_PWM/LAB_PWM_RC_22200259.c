@@ -5,7 +5,7 @@ Created          : 05-03-2021
 Modified         : 11-02-2026
 Language/ver     : C++ in VS Code
 
-Description      : Stepper Motor LAB
+Description      : RC Servo Motor LAB
 /----------------------------------------------------------------*/
 
 #include "ecSTM32F4v2.h"
