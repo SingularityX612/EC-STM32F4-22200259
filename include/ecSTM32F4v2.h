@@ -1,7 +1,7 @@
 //ecSTM32F4v2.h
 /*----------------------------------------------------------------\
 @ Embedded Controller by Young-Keun Kim - Handong Global University
-Author           : 22200259 명금준
+Author           : 22200259 Keumjoon Myeong
 Created          : 05-03-2021
 Modified         : 10-01-2026
 Language/ver     : C++ in VS Code
@@ -24,8 +24,8 @@ Description      : Singularity is near
 #include "ecGPIO2.h"
 #include "ecEXTI2.h"
 #include "ecSysTick2.h"
-//#include "ecTIM2.h"
-//#include "ecPWM2.h"
+#include "ecTIM2.h"
+#include "ecPWM2.h"
 #include "ecStepper2.h"
 //#include "ecADC2.h"
 #include "ecUART2.h"

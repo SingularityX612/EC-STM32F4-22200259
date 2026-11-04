@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------\
 @ Embedded Controller by Young-Keun Kim - Handong Global University
-Author           : 22200259 명금준
+Author           : 22200259 Keumjoon Myeong
 Created          : 05-03-2021
 Modified         : 10-14-2026
 Language/ver     : C++ in VS Code
@@ -57,6 +57,7 @@ void stepper_out(uint32_t state);
 // Stop Stepper Motor
 void stepper_stop(void);
 
+extern volatile uint32_t is_paused; // ISR에서 외부 버튼 눌림을 감지하면 이 변수를 토글하여 모터를 일시정지/재개함
 
 #ifdef __cplusplus
 }

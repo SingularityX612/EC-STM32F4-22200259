@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------\
 @ Embedded Controller by Young-Keun Kim - Handong Global University
-Author           : [ YOUR NAME GOES HERE !!!!!]
+Author           : 22200259-Keumjoon Myeong
 Created          : 05-03-2021
 Modified         : 00-00-2026 [WRITE THE DATE!!!!]
 Language/ver     : C++ in VS Code
@@ -64,6 +64,7 @@ void FND_init(PinName_t *pinFND);
 void FND_select_init(PinName_t *selectFND);
 void FND_display(uint8_t num);
 void FND_select(uint8_t digit);
+void led_toggle(PinName_t pinName);
 
 #ifdef __cplusplus
 }

@@ -17,15 +17,7 @@ Description      : EXTI PreLAB
 #define LED7_PIN PC_3  // EVAL board JKIT LED7
 #define SW2_PIN PA_4   // EVAL board JKIT SW2
 
-void led_toggle(PinName_t pinName) {
-  GPIO_TypeDef *Port;
-  unsigned int pin;
-  ecPinmap(pinName, &Port, &pin);
 
-  // YOUR CODE GOES HERE - Use XOR
-  Port->ODR ^= (1UL << pin);
-  // [YOUR CODE GOES HERE]
-}
 
 // Initialiization
 void setup(void) {

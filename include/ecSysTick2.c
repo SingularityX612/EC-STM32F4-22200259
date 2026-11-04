@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------\
 @ Embedded Controller by Young-Keun Kim - Handong Global University
-Author           : 22200259 명금준
+Author           : 22200259 Keumjoon Myeong
 Created          : 05-03-2021
 Modified         : 10-14-2026
 Language/ver     : C++ in VS Code
