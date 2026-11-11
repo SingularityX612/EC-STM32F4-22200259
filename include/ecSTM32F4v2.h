@@ -29,6 +29,7 @@ Description      : Singularity is near
 #include "ecStepper2.h"
 //#include "ecADC2.h"
 #include "ecUART2.h"
+#include "ecICAP2.h"
 
 #endif
 
