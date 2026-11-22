@@ -40,7 +40,6 @@
 
 volatile uint32_t light_val = 0;
          uint32_t light_on_time = 0;
-        //  uint32_t light_diff = 0;
          uint32_t dark_th = LIGHT_DARK;
          uint32_t bright_th = LIGHT_BRIGHT;
 volatile uint32_t moist_val = 0;
@@ -69,7 +68,6 @@ void setup(void){
     SysTick_init();
 
     USART_init(USART2, DEBUG_TX, DEBUG_RX, 9600);
-    // [디버깅] setup() 도중 멈출 경우 UART2 문제인지 이후 초기화(LCD/TIM1) 문제인지 분리하기 위한 체크포인트
     printf("UART2 OK\r\n");
     USART_init(USART6, BT_TX, BT_RX, 9600);
 
@@ -99,22 +97,17 @@ void setup(void){
 }
 
 int main(void){
-    // 이전 출력 상태를 기억하는 지역 변수 (초기값을 초기 상태와 다르게 두어 부팅 직후 1회 출력 보장)
-    // - 왜 매 루프마다 PWM_duty()를 부르지 않는가?
-    //   타이머 파형 자체가 끊기지는 않지만(OCxPE 프리로드 활성), 매 루프 핀맵/실수 연산을 반복하는
-    //   CPU 낭비를 없애기 위해 상태가 바뀐 순간에만 1회 레지스터를 갱신함.
+
     static uint32_t prev_fan_on = 1;
     static uint32_t prev_window_open = 1;
-    static uint32_t prev_LED_duty = 101;    // 유효 범위(0~100) 밖 값으로 초기화하여 첫 루프 보장
+    static uint32_t prev_LED_duty = 101;
     static uint32_t print_tick = 0;
-    static uint32_t flag_usb_msg = 0;   // Periodic USB status print flag (used inside main() only)
+    static uint32_t flag_usb_msg = 0;
 
     setup();
-    // Does the LCD answer ?  A module with the wrong address stays blank.
     static int err = 0;
     char lcd_line1[20];
     char lcd_line2[20];
-    // char lcd_tmp[20];
 	err = I2C1_write(LCD_ADDR, LCD_BACKLIGHT);
 	if(err)	printf("LCD NOT found. Check the wiring\r\n");
 	else	printf("LCD found at 0x%02X\r\n", LCD_ADDR);
@@ -138,14 +131,7 @@ int main(void){
                     printf("DHT11 error: %d (cnt=%lu)\r\n", dht_err, dht_err_cnt);
                 }
             }
-                // if(mode == AUTO){
-                //     static uint32_t print_tick = 0;
-                //     print_tick++;
-                //     if(print_tick >= 5){
-                //         print_tick = 0;
-                //         printf("----------------------\r\nlight value: %lu \r\nhumidity: %lu \r\ntemperature: %lu \r\nmoisture: %lu\r\n", light_val, humi_val, temp_val, moist_val);
-                //     }
-                // }                    
+                   
             if (mode == AUTO){
                 if(auto_delay_cnt > 0){
                     auto_delay_cnt--;
@@ -272,19 +258,17 @@ int main(void){
         }
         // 
         if (prev_fan_on != fan_on){
-            // 0과 1은 float로 암시적 형변환해도 손실이 없으나, 가독성과 추후 속도 조절 확장을 위해 명시적으로 지정
             PWM_duty(VENT_FAN, fan_on ? 0.8f : 0.0f);
             prev_fan_on = fan_on;
         }
         if (prev_window_open != window_open){
-            // 서보모터: 닫힘(500 us) / 열림(1500 us, 필요 시 기구 각도에 맞게 1500~2500 us 범위에서 조정)
             PWM_pulsewidth_us(WINDOW_SERVO, window_open ? SERVO_OPEN_US : SERVO_CLOSE_US);
             prev_window_open = window_open;
         }
 
-        // Serial / Bluetooth status reporting (USB periodic monitoring vs. BT command/alarm events)
+        // Serial / Bluetooth status reporting (USB periodic monitoring & BT command/alarm events)
         if (flag_bt_msg || flag_usb_msg){
-            // Snapshot and clear flags before slow UART TX to avoid losing a new USART6 RX interrupt (race condition)
+            // Snapshot and clear flags before slow UART TX to avoid losing a new USART6 RX interrupt
             uint32_t send_bt  = flag_bt_msg;
             uint32_t send_usb = flag_usb_msg;
             flag_bt_msg  = 0;
@@ -332,7 +316,7 @@ void USART6_IRQHandler(void){
         uint8_t bt_data = USART_read(USART6);
 
         USART_write(USART6, &bt_data, 1);  // Echo to Bluetooth Tera Term
-        USART2_write(&bt_data, 1);  // Echo to USB Tera Term
+        USART2_write(&bt_data, 1);         // Echo to USB Tera Term
 
         if(bt_data == 'M') {
             mode ^= 1;
@@ -354,7 +338,6 @@ void USART6_IRQHandler(void){
             flag_bt_msg = 1;
         }
         else if(bt_data == 'A'){
-            // 알람 확인(Ack)은 AUTO/MANUAL 어느 모드에서든 가능해야 하므로 mode == MANUAL 조건 제외
             alarm_ack = 1;
             flag_bt_msg = 1;
         }
